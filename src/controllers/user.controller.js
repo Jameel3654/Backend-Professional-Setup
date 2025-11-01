@@ -7,8 +7,8 @@ import ApiResponse from "../utils/ApiResponse.js";
 
 const registerUser = asyncHandler(async (req, res) => {
   const { fullName, username, email, password } = req.body;
-  console.log("Received registration data:", req.body);
-  console.log(`Registering user: ${username}, Email: ${email}`);
+  // console.log("Received registration data:", req.body);
+  // console.log(`Registering user: ${username}, Email: ${email}`);
 
   if (
     [fullName, username, email, password].some((field) => field?.trim() === "")
