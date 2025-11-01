@@ -19,7 +19,8 @@ const uploadOnCloudinary = async (filePath) => {
       resource_type: "auto",
     });
     //file has been upload successfully
-    console.log("file has been uploaded", response.url);
+    // console.log("file has been uploaded", response);
+    fs.unlinkSync(filePath); // remove file save as temp upload operation
     return response;
   } catch (error) {
     fs.unlink(filePath); //remove file save as temp upload operation
@@ -27,4 +28,4 @@ const uploadOnCloudinary = async (filePath) => {
   }
 };
 
-export { uploadOnCloudinary };
+export default uploadOnCloudinary;
