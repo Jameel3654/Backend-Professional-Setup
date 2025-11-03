@@ -61,6 +61,18 @@ const registerUser = asyncHandler(async (req, res) => {
   return res
     .status(201)
     .json(new ApiResponse(200, createdUser, "User registered successfully"));
+
+  const loginUser = asyncHandler(async (req, res) => {
+    const { username, email, password } = req.body;
+    if (!username || !email) {
+      throw new ApiErrors(400, "All fields are required for login");
+    }
+
+    const user = await User.findOne({ $or: [{ username }, { email }] });
+    if (!user) {
+      throw new ApiErrors(404, "User not found");
+    }
+  });
 });
 
 export default registerUser;
